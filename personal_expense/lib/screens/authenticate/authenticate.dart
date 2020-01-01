@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expense/screens/authenticate/register.dart';
+import 'package:personal_expense/screens/authenticate/sign_in.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -6,10 +8,15 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool showSignIn = true;
+
+  void toggleView(){
+    setState(()=> showSignIn = !showSignIn);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Authenticate Page", style: TextStyle(fontSize: 20, color: Colors.white),),
+      child: showSignIn ? SignIn(toggleView: toggleView) : Register(toggleView: toggleView),
     );
   }
 }
